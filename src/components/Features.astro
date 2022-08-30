@@ -1,4 +1,6 @@
 ---
+import Card from "./Card.astro";
+
 const featuresData = [
   {
     title: "Zero JavaScript Runtime",
@@ -19,17 +21,14 @@ const featuresData = [
   <div class="container">
     {
       featuresData.map((feature) => (
-        <div class="card">
-          <h3>{feature.title}</h3>
-          <p>{feature.body}</p>
-        </div>
+      <Card title={feature.title} body={feature.body}/>
       ))
     }
   </div>
 </section>
 
+
 <style>
-  /* Cards */
   .features .container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -38,11 +37,9 @@ const featuresData = [
     margin: 30px auto;
   }
 
-  .card {
-    background: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
-  }
+	@media (max-width: 500px) {
+		.features .container {
+			grid-template-columns: 1fr;
+		}
+	}
 </style>
